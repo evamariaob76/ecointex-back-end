@@ -42,11 +42,11 @@ public class SmtpMailSenderController {
 	}
 	
 	@PostMapping("/api/sendmail/admin")
-	public void sendMailAdmin( @RequestParam("texto") String texto, @RequestParam("apellido") String apellido, @RequestParam("email") String email,@RequestParam("nombre") String nombre ) throws MessagingException{
+	public void sendMailAdmin( @RequestParam("email") String email, @RequestParam("telefono") String telefono, @RequestParam("empresa") String empresa,@RequestParam("nombre") String nombre ) throws MessagingException{
 		Long id=(long) 2;
 		Usuario usuario= usuarioService.findById(id);
 		
-	smtpMailSender.send(usuario.getEmail(), nombre+" "+apellido, " <br>mi mensaje es:    "+texto);	
+	smtpMailSender.send(usuario.getEmail(), "hola, mi nombre es: "+nombre+"  "+"y mi empresa es:  "+empresa, " <br>mi telefono es:    "+telefono+"  y mi mail es :   "+ email);	
 	
 
 		}
